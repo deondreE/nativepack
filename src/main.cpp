@@ -1,18 +1,14 @@
+#include "config.h"
 #include "logger.h"
 #include <iostream>
 #include <toml++/toml.hpp>
 
 int main(int argc, char **argv) {
-  toml::table tbl;
+  Config *config = new Config("./src/configuration.toml");
 
-  try {
-    tbl = toml::parse_file(argv[1]);
-    Logger::GetInstance().error() << tbl;
-    std::cout << "\n";
-  } catch (const toml::parse_error &err) {
-    Logger::GetInstance().error() << err;
-    return 1;
-  }
+  auto user_config = config->get_user_config();
+
+  Logger::GetInstance().info() << *user_config.project_name;
 
   return 0;
 }

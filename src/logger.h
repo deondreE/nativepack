@@ -1,5 +1,5 @@
 // Copyright -- deondreE / Nativepack Core Team.
-
+#pragma once
 #include "core.h"
 
 enum class LogLevel { Trace, Info, Warning, Error };
@@ -59,7 +59,8 @@ public:
       std::ostringstream logMessage;
       logMessage << colorCode << "[" << timestamp << "] ["
                  << m_CoreLogger->logger_name << "]\n"
-                 << value << "\033[0m"; // Reset color
+                 << value << '\n'
+                 << "\033[0m"; // Reset color
 
       std::cout << logMessage.str();
 
@@ -95,7 +96,7 @@ public:
 private:
   Logger() {
     m_CoreLogger = std::make_shared<LogInstance>();
-    m_CoreLogger->logger_name = "DefaultLogger";
+    m_CoreLogger->logger_name = "Core Logger";
   }
 
   Ref<LogInstance> m_CoreLogger;

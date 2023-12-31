@@ -1,6 +1,11 @@
 # Clean for pushing to GitHub.
 cd ../
-rm -rf main
-rm -rf Testing/
-rm -rf .cmake/
-rm -rf CMakeFiles/
+# builds
+rm -rf ./main
+# ninja
+rm -rf .ninja_deps .ninja_log build.ninja
+# cmake
+rm -rf cmake_install.cmake CMakeCache.txt CMakeFiles/ .cmake/ Testing/
+
+# github
+git add -A
