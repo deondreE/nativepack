@@ -1,0 +1,63 @@
+# build files
+CMakeFiles/
+main
+
+# ide files
+.cmake/
+.idea/
+
+# cmake / ninja
+cmake_install.cmake
+CMakeCache.txt
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+*.patch
+.DS_Store
+
+# Ninja output
+.ninja_deps
+.ninja_log
+
+# clangd
+/.clangd/
+/compile_commands.json
+/.cache/
+
+# Visual Studio files
+/.vs/
+/out/
+
+# build files
+*.pyc
+*.obj
+*.exe
+*.pdb
+*.ilk
+/build*/
+/build.ninja
+/ninja
+/ninja.bootstrap
+/build_log_perftest
+/canon_perftest
+/clparser_perftest
+/depfile_parser_perftest
+/hash_collision_bench
+/ninja_test
+/manifest_parser_perftest
+/graph.png
+/doc/manual.html
+/doc/doxygen
+
+# SublimeText project files
+*.sublime-project
+*.sublime-workspace

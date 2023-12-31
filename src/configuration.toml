@@ -1,0 +1,6 @@
+[library]
+name = "test"
+authors = ["test"]
+
+[dependencies]
+cpp = 17
