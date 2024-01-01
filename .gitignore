@@ -8,6 +8,7 @@ lib/
 .cmake/
 .idea/
 build
+test_dir/
 
 # cmake / ninja
 cmake_install.cmake

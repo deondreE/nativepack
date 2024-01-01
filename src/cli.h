@@ -62,10 +62,10 @@ class Cli {
 
   std::vector<std::string> commands = {"--help", "--name", "--init"};
 
-  int execute(NativepackCore::UserCommand command) {
+  int execute(const NativepackCore::UserCommand& command) {
     switch (command.command_type) {
       case NativepackCore::CommandType::INIT:
-        // system("../scripts/init_project.sh");
+        system("./scripts/init_project.sh");
         break;
       case NativepackCore::CommandType::HELP:
         printf("Command Ran: %s\n", command.command_string.c_str());
@@ -83,8 +83,9 @@ class Cli {
   /// @brief Check if the command is valid.
   /// @param current_command Command the user puts in.
   /// @return boolean.
-  bool check_valid(std::string current_command) {
-    for (std::string default_command : commands) {
+  bool check_valid(const std::string& current_command) {
+    // TODO: Change this to std::any_of();
+    for (const std::string& default_command : commands) {
       if (current_command == default_command) return true;
     }
 
