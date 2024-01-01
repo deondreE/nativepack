@@ -67,7 +67,7 @@ class Cli {
       case NativepackCore::CommandType::INIT:
         break;
       case NativepackCore::CommandType::HELP:
-        printf("Command Ran: %s", command.command_string.c_str());
+        printf("Command Ran: %s\n", command.command_string.c_str());
         Logger::GetInstance().info() << help_string;
         break;
       case NativepackCore::CommandType::CONFIG:

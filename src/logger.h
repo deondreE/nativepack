@@ -2,6 +2,8 @@
 #pragma once
 #include "core.h"
 
+// TODO: add the ability to remove the timestamp and name details if built.
+
 enum class LogLevel { Trace, Info, Warning, Error };
 struct LogInstance {
   std::string logger_name;
