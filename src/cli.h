@@ -65,6 +65,7 @@ class Cli {
   int execute(NativepackCore::UserCommand command) {
     switch (command.command_type) {
       case NativepackCore::CommandType::INIT:
+        // system("../scripts/init_project.sh");
         break;
       case NativepackCore::CommandType::HELP:
         printf("Command Ran: %s\n", command.command_string.c_str());

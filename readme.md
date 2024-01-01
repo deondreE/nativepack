@@ -1,6 +1,6 @@
 # ➢ Nativepack
 
-Nativepack is a tool for developers to create software from web -> mobile. Take your web applications and see them perfectally translate into native code.
+Nativepack is a transpiler for web -> Mobile. It takes html and turns it into, native mobile code.
 
 # ➢ Contributing
 

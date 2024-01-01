@@ -1,3 +1,4 @@
+#pragma once
 #include <toml++/toml.hpp>
 
 #include "core.h"
@@ -5,12 +6,11 @@
 
 class Config {
  public:
-  Config(std::string filename) {
-    m_filename = filename;
+  explicit Config(std::string filename) {
+    m_filename = std::move(filename);
     this->set_user_table();
     this->translate_user_config(user_table);
   };
-  ~Config();
 
   struct UserConfig {
     std::optional<std::string> project_name;

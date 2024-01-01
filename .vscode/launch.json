@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "by-gdb",
+      "request": "attach",
+      "name": "Attach(gdb)",
+      "program": "${workspaceFolder}/main",
+      "cwd": "${workspaceRoot}"
+    }
+  ]
+}
