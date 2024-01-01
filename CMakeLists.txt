@@ -4,6 +4,7 @@ project(Nativepack LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
 
 # Testing things
 include(FetchContent)
