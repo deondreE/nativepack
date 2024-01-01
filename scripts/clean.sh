@@ -5,8 +5,8 @@ rm -rf ./main
 # ninja
 rm -rf .ninja_deps .ninja_log build.ninja
 # cmake
-rm -rf cmake_install.cmake CMakeCache.txt CMakeFiles/ .cmake/ Testing/
+rm -rf cmake_install.cmake CMakeCache.txt CMakeFiles/ .cmake/ Testing/ _deps/ lib/ tests[1]_include.cmake tests[1]_tests.cmake tests CTestTestfile.cmake
 # testing
-_deps/
+
 # github
 git add -A

@@ -9,10 +9,7 @@ struct LogInstance {
 
 class Logger {
  public:
-  ~Logger() {
-    printf("Removing the logger Instance");
-    std::cout.flush();
-  }
+  ~Logger() { std::cout.flush(); }
 
   // Gets the singleton instance, for the loggers lifetime...
   static Logger &GetInstance() {

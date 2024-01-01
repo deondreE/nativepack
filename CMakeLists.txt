@@ -22,13 +22,15 @@ add_subdirectory(vendor/tomlplusplus)
 # Testing Executable.
 enable_testing()
 
-add_executable(tests __tests__/hello_test.cc)
+add_executable(tests __tests__/config_test.cc)
 target_link_libraries(tests GTest::gtest_main)
+
+target_include_directories(tests PRIVATE vendor/tomlplusplus/include)
 
 include(GoogleTest)
 gtest_discover_tests(tests)
 
 # Main Executable.
-add_executable(main src/main.cpp src/config.h src/config.cpp src/logger.h src/core.h)
+add_executable(main src/main.cpp src/config.h src/config.cpp src/logger.h src/core.h src/cli.h)
 
 target_include_directories(main PRIVATE vendor/tomlplusplus/include)
