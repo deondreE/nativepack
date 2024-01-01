@@ -1,6 +1,8 @@
 # build files
 CMakeFiles/
 main
+tests*
+lib/
 
 # ide files
 .cmake/
@@ -20,6 +22,7 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+vendor*
 
 *.patch
 .DS_Store

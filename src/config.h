@@ -1,9 +1,10 @@
-#include "core.h"
-#include "logger.h"
 #include <toml++/toml.hpp>
 
+#include "core.h"
+#include "logger.h"
+
 class Config {
-public:
+ public:
   Config(std::string filename) {
     m_filename = filename;
     this->set_user_table();
@@ -19,7 +20,7 @@ public:
   /// @brief returns the current user config.
   UserConfig get_user_config();
 
-private:
+ private:
   /// @brief sets the user table to the given value.
   void set_user_table();
 

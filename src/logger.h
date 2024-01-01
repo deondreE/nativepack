@@ -8,7 +8,7 @@ struct LogInstance {
 };
 
 class Logger {
-public:
+ public:
   ~Logger() {
     printf("Removing the logger Instance");
     std::cout.flush();
@@ -21,27 +21,28 @@ public:
   }
 
   class LoggerProxy {
-  public:
+   public:
     LoggerProxy(LogLevel level, const Ref<LogInstance> &coreLogger)
         : m_Level(level), m_CoreLogger(coreLogger) {}
 
-    template <typename T> LoggerProxy &operator<<(const T &value) {
+    template <typename T>
+    LoggerProxy &operator<<(const T &value) {
       std::string colorCode;
       switch (m_Level) {
-      case LogLevel::Trace:
-        colorCode = "\033[37m"; // White
-        break;
-      case LogLevel::Info:
-        colorCode = "\033[32m"; // Green
-        break;
-      case LogLevel::Warning:
-        colorCode = "\033[33m"; // Yellow
-        break;
-      case LogLevel::Error:
-        colorCode = "\033[31m"; // Red
-        break;
-      default:
-        colorCode = "\033[0m"; // Reset color
+        case LogLevel::Trace:
+          colorCode = "\033[37m";  // White
+          break;
+        case LogLevel::Info:
+          colorCode = "\033[32m";  // Green
+          break;
+        case LogLevel::Warning:
+          colorCode = "\033[33m";  // Yellow
+          break;
+        case LogLevel::Error:
+          colorCode = "\033[31m";  // Red
+          break;
+        default:
+          colorCode = "\033[0m";  // Reset color
       }
 
       // Get the current time from the system clock...
@@ -60,30 +61,30 @@ public:
       logMessage << colorCode << "[" << timestamp << "] ["
                  << m_CoreLogger->logger_name << "]\n"
                  << value << '\n'
-                 << "\033[0m"; // Reset color
+                 << "\033[0m";  // Reset color
 
       std::cout << logMessage.str();
 
       return *this;
     }
 
-  private:
+   private:
     LogLevel m_Level;
     Ref<LogInstance> m_CoreLogger;
 
     // Takes in possible log level...
     static std::string LogLevelToString(LogLevel level) {
       switch (level) {
-      case LogLevel::Trace:
-        return "TRACE";
-      case LogLevel::Info:
-        return "INFO";
-      case LogLevel::Warning:
-        return "WARNING";
-      case LogLevel::Error:
-        return "ERROR";
-      default:
-        return "";
+        case LogLevel::Trace:
+          return "TRACE";
+        case LogLevel::Info:
+          return "INFO";
+        case LogLevel::Warning:
+          return "WARNING";
+        case LogLevel::Error:
+          return "ERROR";
+        default:
+          return "";
       }
     }
   };
@@ -93,7 +94,7 @@ public:
   LoggerProxy warning() { return LoggerProxy(LogLevel::Warning, m_CoreLogger); }
   LoggerProxy error() { return LoggerProxy(LogLevel::Error, m_CoreLogger); }
 
-private:
+ private:
   Logger() {
     m_CoreLogger = std::make_shared<LogInstance>();
     m_CoreLogger->logger_name = "Core Logger";
