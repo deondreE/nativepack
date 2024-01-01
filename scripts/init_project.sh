@@ -2,7 +2,10 @@
 echo "initializing new project"
 rm -rf test_dir/
 mkdir test_dir/
-cd test_dir/ || exit
+cd test_dir/ ||
+# TODO: Put the contents of this file inside the source.
+touch project.yml
+cp -a ../input/project.yml project.yml
 # steps to this process.
 mkdir src/ .build/
 cd src/ || exit

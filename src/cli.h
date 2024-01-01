@@ -91,5 +91,9 @@ class Cli {
 
     return false;
   }
+
+  void create_default_p_config(const std::string& project_name) {
+
+  }
 };
 }  // namespace NativepackCore
