@@ -1,9 +1,10 @@
 #pragma once
 #include "core.h"
 #include "logger.h"
+#include "config.h"
 
 namespace NativepackCore {
-enum class CommandType { HELP, INIT, CONFIG };
+enum class CommandType { HELP, INIT, CONFIG, RUN };
 struct UserCommand {
   std::string command_string;
   NativepackCore::CommandType command_type;
@@ -47,6 +48,12 @@ class Cli {
         command.command_string = current_command;
         this->execute(command);
       }
+      if (current_command == commands[3]) {
+        // --run
+        command.command_type = CommandType::RUN;
+        command.command_string = current_command;
+        this->execute(command);
+      }
     }
   }
 
@@ -60,9 +67,10 @@ class Cli {
         --v: Version of the cli.
     )";
 
-  std::vector<std::string> commands = {"--help", "--name", "--init"};
+  std::vector<std::string> commands = {"--help", "--name", "--init", "--run"};
 
   int execute(const NativepackCore::UserCommand& command) {
+    auto* config = new Config();
     switch (command.command_type) {
       case NativepackCore::CommandType::INIT:
         system("./scripts/init_project.sh");
@@ -71,12 +79,17 @@ class Cli {
         printf("Command Ran: %s\n", command.command_string.c_str());
         Logger::GetInstance().info() << help_string;
         break;
+      case CommandType::RUN:
+        printf("Command Ran: %s\n", command.command_string.c_str());
+        config->read_user_config();
+        break;
       case NativepackCore::CommandType::CONFIG:
         break;
 
       default:
         break;
     }
+
     return 0;
   }
 

@@ -1,19 +1,24 @@
 #include "config.h"
 
-void Config::set_user_table() {
-  try {
-    // set the value of the user_table.
-    user_table = toml::parse_file(m_filename);
-  } catch (const toml::parse_error &err) {
-    Logger::GetInstance().error() << err;
+using json = nlohmann::json;
+
+void Config::Config::read_user_config() {
+  // read from the users file, then update the default config.
+  // 1. read the users config.
+
+  std::ifstream input_file(this->m_filename);
+
+  if (!input_file.is_open()) {
+    Logger::GetInstance().error() << "Error Opening the file";
   }
+
+  json data = json::parse(input_file);
+  std::cout << data["project_name"];
+
+  // on each run the config file will be read for changes.
+  // when we support hot reloading on each time the file changes this file will be read..
+  this->m_default_config.project_name = data["project_name"];
+  this->m_default_config.authors = data["authors"];
+  this->m_default_config.license_file = data["license"];
 }
 
-Config::UserConfig Config::get_user_config() { return user_config; }
-
-void Config::translate_user_config(toml::table user_table) {
-  Config::UserConfig new_config;
-  auto project_name = user_table["project_name"].value<std::string>();
-
-  user_config.project_name = project_name;
-}

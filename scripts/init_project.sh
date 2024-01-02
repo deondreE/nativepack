@@ -2,11 +2,8 @@
 echo "initializing new project"
 rm -rf test_dir/
 mkdir test_dir/
-cd test_dir/ ||
-# TODO: Put the contents of this file inside the source.
-touch project.yml
-cp -a ../input/project.yml project.yml
-# steps to this process.
+cd test_dir/ || exit
+touch nativepack.json
 mkdir src/ .build/
 cd src/ || exit
 mkdir views/ images/ fonts/

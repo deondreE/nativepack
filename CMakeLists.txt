@@ -17,17 +17,19 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-
 # vendor / external sources.
-add_subdirectory(vendor/tomlplusplus)
+add_subdirectory(vendor/tomlplusplus vendor/json)
 
 # Testing Executable.
 enable_testing()
 
-add_executable(tests __tests__/config_test.cc)
+# Test glob
+file(GLOB TEST_SOURCE "__tests__/*.cc")
+
+add_executable(tests ${TEST_SOURCE})
 target_link_libraries(tests GTest::gtest_main)
 
-target_include_directories(tests PRIVATE vendor/tomlplusplus/include)
+target_include_directories(tests PRIVATE vendor/tomlplusplus/include vendor/json)
 
 include(GoogleTest)
 gtest_discover_tests(tests)
@@ -39,4 +41,4 @@ file(GLOB HEADERS "src/*.h")
 # Main Executable.
 add_executable(main ${SOURCES} ${HEADERS})
 
-target_include_directories(main PRIVATE vendor/tomlplusplus/include)
+target_include_directories(main PRIVATE vendor/tomlplusplus/include vendor/json/single_include)
