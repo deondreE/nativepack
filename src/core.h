@@ -6,6 +6,8 @@
 #include <iostream>
 #include <memory>
 #include <sstream>
+#include <unordered_set>
+#include <functional>
 #include <string>
 #include <vector>
 

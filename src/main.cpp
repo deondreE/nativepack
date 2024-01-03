@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
 
   if (running) {
     auto* cli = new NativepackCore::Cli();
-    cli->match_string(std::string(argv[1]));
+    cli->findCommand(argv[1]);
   }
 
   return 0;
