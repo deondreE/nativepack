@@ -89,7 +89,8 @@
       "set": "cpp",
       "__memory": "cpp",
       "memory_resource": "cpp",
-      "__verbose_abort": "cpp"
+      "__verbose_abort": "cpp",
+      "any": "cpp"
     },
     "git.ignoreLimitWarning": true
   }

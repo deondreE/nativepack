@@ -38,7 +38,9 @@ gtest_discover_tests(tests)
 file(GLOB SOURCES "src/*.cpp")
 file(GLOB HEADERS "src/*.h")
 
+file(GLOB LEXER "src/lexer/*.h")
+
 # Main Executable.
-add_executable(main ${SOURCES} ${HEADERS})
+add_executable(main ${SOURCES} ${LEXER} ${HEADERS})
 
 target_include_directories(main PRIVATE vendor/tomlplusplus/include vendor/json/single_include)
