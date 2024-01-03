@@ -1,5 +1,6 @@
 # This initializes the core project from the users input. Then Creates an xcode project to go with that process to.
 echo "initializing new project"
+
 rm -rf test_dir/
 mkdir test_dir/
 cd test_dir/ || exit

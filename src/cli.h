@@ -24,11 +24,12 @@ namespace NativepackCore {
 
     void execute(const std::string &command) {
       Cli cliInstance;
-      std::unordered_set<std::string> validCommands = {"help", "run", "init"};
+      std::unordered_set<std::string> validCommands = {"help", "run", "init", "v"};
       std::map<std::string, std::function<void(Cli &)> > commandMap;
       commandMap["help"] = std::bind(&Cli::help_command, &cliInstance);
       commandMap["run"] = std::bind(&Cli::help_command, &cliInstance);
       commandMap["init"] = std::bind(&Cli::init_commnad, &cliInstance);
+      commandMap["v"] = std::bind(&Cli::run_version, &cliInstance);
 
       auto execute_command = commandMap.find(command);
       if (validCommands.find(command) != validCommands.end()) {
@@ -52,7 +53,7 @@ namespace NativepackCore {
     std::string cli_version = "0.0.1";
 
     // TODO: remove this soon.
-    std::vector<std::string> commands = {"help", "name ", "init", "run"};
+    std::vector<std::string> commands = {"help", "name ", "init", "run", "v"};
 
     /// @brief Checks if the command is valid.
     /// @param current_command
@@ -74,6 +75,8 @@ namespace NativepackCore {
     void init_commnad() {
       // TODO: find a better solution for more dynamic user interaction.
       system("./scripts/init_project.sh");
+      // 1. use the user supplied input for the name of the project.
+      // 2. generate the correct project files, through a bash / powershell script depending.
     }
     /// Run the project, directory.
     void run_command() {
